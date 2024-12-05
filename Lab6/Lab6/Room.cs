@@ -16,6 +16,14 @@ namespace Lab6
         public int Price;
         public int Category;
 
+        public Room()
+        {
+            Floor = 0;
+            Capacity = 0;
+            Price = 0;
+            Category = 0;
+        }
+
         public Room(int floor, int capacity, int price, int category)
         {
             Floor = floor;

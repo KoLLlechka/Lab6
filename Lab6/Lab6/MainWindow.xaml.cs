@@ -115,7 +115,7 @@ namespace Lab6
                     VisibleValue(Visibility.Visible, Visibility.Visible, Visibility.Visible,
                         Visibility.Visible, Visibility.Collapsed, Visibility.Collapsed,
                         Visibility.Collapsed);
-                    value3.Height = 18;
+                    //value3.Height = 18;
                     ChangedTask(Visibility.Visible);
                     break;
                 case "Lab 6: Пункт 5":
@@ -128,7 +128,7 @@ namespace Lab6
                         Visibility.Collapsed);
                     table.Visibility = Visibility.Visible;
                     ontable.Visibility = Visibility.Visible;
-                    value3.Height = 18;
+                    //value3.Height = 18;
                     input.Visibility = Visibility.Collapsed;
                     outputButton.Visibility = Visibility.Collapsed;
                     break;
@@ -136,12 +136,13 @@ namespace Lab6
                     logger.Log("В tasksComboBox выбрано \"Lab 6: Пункт 6.1\"");
                     answer.Content = "";
                     task.Content = "Запрос с обращением к одной таблице\n\n" +
-                        "Определить количество забронированных номеров категории 5";
+                        "Определить количество забронированных номеров категории 5\n" +
+                        "и вывести их коды";
                     ValueText("", "", "", "", "", "", "");
                     VisibleValue(Visibility.Collapsed, Visibility.Collapsed, Visibility.Collapsed,
                         Visibility.Collapsed, Visibility.Collapsed, Visibility.Collapsed,
                         Visibility.Collapsed); 
-                    value3.Height = 18;
+                    //value3.Height = 18;
                     ChangedTask(Visibility.Collapsed);
                     break;
                 case "Lab 6: Пункт 6.2":
@@ -155,7 +156,7 @@ namespace Lab6
                     VisibleValue(Visibility.Collapsed, Visibility.Collapsed, Visibility.Collapsed,
                         Visibility.Collapsed, Visibility.Collapsed, Visibility.Collapsed,
                         Visibility.Collapsed); 
-                    value3.Height = 18;
+                    //value3.Height = 18;
                     ChangedTask(Visibility.Collapsed);
                     break;
                 case "Lab 6: Пункт 6.3":
@@ -169,7 +170,7 @@ namespace Lab6
                     VisibleValue(Visibility.Collapsed, Visibility.Collapsed, Visibility.Collapsed,
                         Visibility.Collapsed, Visibility.Collapsed, Visibility.Collapsed,
                         Visibility.Collapsed); 
-                    value3.Height = 18;
+                    //value3.Height = 18;
                     ChangedTask(Visibility.Collapsed);
                     break;
                 case "Lab 6: Пункт 6.4":
@@ -178,12 +179,12 @@ namespace Lab6
                     task.Content = "Второй запрос с обращением к трем таблицам\n\n" +
                         "Определить общее количество номеров категории 1, забронированных\n" +
                         "клиентами с фамилией, начинающуюся на \"А\" с 11 по 23 июня\n" +
-                        "включительно";
+                        "включительно и вывести коды номеров";
                     ValueText("", "", "", "", "", "", "");
                     VisibleValue(Visibility.Collapsed, Visibility.Collapsed, Visibility.Collapsed,
                         Visibility.Collapsed, Visibility.Collapsed, Visibility.Collapsed,
                         Visibility.Collapsed); 
-                    value3.Height = 18;
+                    //value3.Height = 18;
                     ChangedTask(Visibility.Collapsed);
                     break;
                 default:
@@ -355,9 +356,17 @@ namespace Lab6
                             where (hotelDatabase.rooms[el].Category == 1)
                             select el;
 
-            result += oneCat.Count() + "\n";
+            result += oneCat.Count() + "\nКоды номеров:\n";
+            int i = 0;
+            foreach (var room in oneCat)
+            {
+                if (i % 10 == 0)
+                    result += "\n";
+                result += room + ", ";
+                i++;
+            }
             logger.Log("Запрос успешно обработан");
-            return result;
+            return result.Substring(0, result.Length - 2);
         }
 
         private string Paragraph6_3()
@@ -432,9 +441,17 @@ namespace Lab6
             var roomsNum = from el in hotelDatabase.rooms.Keys where
                                              hotelDatabase.rooms[el].Category == 5
                                              select el;
-            result += roomsNum.Count();
+            result += roomsNum.Count() + "\nКоды номеров:\n";
+            int i = 0;
+            foreach(var room in roomsNum)
+            {
+                if (i % 10 == 0)
+                    result += "\n";
+                result += room + ", ";
+                i++;
+            }
             logger.Log("Запрос успешно обработан");
-            return result;
+            return result.Substring(0, result.Length - 2);
         }
 
         private string Paragraph5()

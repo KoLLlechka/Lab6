@@ -77,7 +77,7 @@ namespace Lab6
                 throw ex;
             }
         }
-
+        
         public void AddInRooms(int id, int f, int cap, int p, int cat)
         {
             rooms[id] = new Room(f, cap, p, cat);

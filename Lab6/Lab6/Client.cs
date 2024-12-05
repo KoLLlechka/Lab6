@@ -16,6 +16,14 @@ namespace Lab6
         public string Patronymic;
         public string Residence;
 
+        public Client()
+        {
+            Surname = "";
+            Name = "";
+            Patronymic = "";
+            Residence = "";
+        }
+
         public Client(string surname, string name, string patronymic, string residence)
         {
             Surname = surname;

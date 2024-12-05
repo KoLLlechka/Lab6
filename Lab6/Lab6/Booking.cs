@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Office2010.Excel;
+﻿using DocumentFormat.OpenXml.Drawing.Spreadsheet;
+using DocumentFormat.OpenXml.Office2010.Excel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,6 +17,15 @@ namespace Lab6
         public DateTime BookingDate;
         public DateTime CheckInDate;
         public DateTime CheckOutDate;
+
+        public Booking()
+        {
+            ClientId = 0;
+            RoomId = 0;
+            BookingDate = DateTime.MinValue;
+            CheckInDate = DateTime.MinValue;
+            CheckOutDate = DateTime.MinValue;
+        }
 
         public Booking(int clientId, int roomId, DateTime bookingDate, DateTime checkInDate,
             DateTime checkOutDate)
